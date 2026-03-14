@@ -29,3 +29,24 @@ def SingleNumber(nums):
 if __name__ == "__main__":
     num = [4,1,2,1,2]
     print(SingleNumber(num))
+
+
+"""
+nums = [4,1,2,1,2]
+result = 0
+result = 0 ^ 4
+result = 4
+result = 4 ^ 1
+result = 4 ^ 1
+result = 4 ^ 1 ^ 2
+result = 4 ^ 1 ^ 2 ^ 1 
+1 ^ 1 = 0
+4 ^ 2
+4 ^ 2 ^ 2
+2 ^ 2 = 0
+4
+
+Same numbers cancel each other
+Only the single number remains
+
+"""

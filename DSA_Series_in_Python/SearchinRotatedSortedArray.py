@@ -10,7 +10,7 @@ You must write an algorithm with O(log n) runtime complexity.
 """
 
 
-class SortedArr:
+"""class SortedArr:
     def search(self, nums: list[int], target: int) -> int:
         n = len(nums)
 
@@ -26,3 +26,39 @@ target = 4
 s1 = SortedArr()
 
 s1.search(nums, target)
+"""
+
+from typing import List
+
+
+class Solution:
+    def search(self, nums: List[int], target: int) -> int:
+        left = 0
+        right = len(nums)-1
+
+        while left <= right:
+            mid = left+ (right-left)//2
+            # step1 find the target
+            if nums[mid] == target:
+                return mid
+            # step2 left half is sorted
+            if nums[left] <= nums[mid]:
+                if nums[left] <= target <= nums[mid]:
+                    right = mid-1  # search left
+                else:
+                    left = mid+1  # search right
+            
+            # step3 Right half is Sorted
+            else:
+                if nums[mid] <= target <= nums[right]:
+                    right = mid-1 # search right
+                else:
+                    left = mid+1 #serach left
+        return -1
+
+
+nums = [10,20,40,50,60]
+target = 50
+s1 = Solution()
+
+print(f"Index: {s1.search(nums, target)}")
